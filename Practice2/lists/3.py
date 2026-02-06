@@ -1,0 +1,15 @@
+#1
+listok=['asdasd','asdasd','zcsvbrth']
+listok[1]='3242342'
+print(listok)
+#2
+lisa=['1','3','4','5','6','9']
+lisa[2:5]=['666']
+print(lisa)
+lisa1=['1','3','4','5','6','9']
+lisa1[2:5]=['6','6','6']
+print(lisa1)
+#3
+lisa2=['1','3','4','5','6','9']
+lisa2.insert(2,'rrrrr')
+print(lisa2)
