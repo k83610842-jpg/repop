@@ -1,0 +1,29 @@
+#1
+print(9==2)
+print(4>3)
+print(4<2)
+#2
+a=45
+b=3
+if a>b:
+    print("boolbool")
+else:
+    print("nebool")
+#3
+print(bool(15))
+print(bool("boolne"))
+print(bool(000))
+#4
+x=["as","js"]
+y=[]
+print(bool(x))
+print(bool(y))
+#5
+bool(False)
+bool(None)
+bool(0)
+bool("")
+bool(())
+bool([])
+bool({})
+
