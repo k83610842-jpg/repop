@@ -52,23 +52,5 @@ class Car(Vehicle):
     def __init__(self, brand, model):
         super().__init__(brand)
         self.model = model
-#8
-class Animal:
-    def speak(self):
-        print("Some sound")
-class Dog(Animal):
-    def speak(self):
-        print("Woof!")
-Dog().speak() 
-#9
-class Flyer:
-    def fly(self):
-        print("I can fly")
-class Swimmer:
-    def swim(self):
-        print("I can swim")
-class Duck(Flyer, Swimmer):
-    pass
-Duck().fly()  
-Duck().swim()
+
 
