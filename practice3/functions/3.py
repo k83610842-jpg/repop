@@ -38,6 +38,10 @@ def func(*numbers):
   return max
 
 print(my_function(3, 7, 2, 9, 1))
+#6
+def func(**kid):
+  print("His last name is " + kid["lname"])
 
+my_function(fname = "Barsa", lname = "Kairat")
 
 
