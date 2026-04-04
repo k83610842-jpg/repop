@@ -27,7 +27,7 @@ with conn.cursor() as cur:
     cur.execute("SELECT * FROM get_contacts_by_pattern(%s);",(pattern,))
     for row in cur.fetchall():
         print(f"Name: {row[0]}, Phone: {row[1]}")
-cur.close()
+conn.close()
 #3
 import psycopg2
 conn=psycopg2.connect(
