@@ -7,16 +7,13 @@ FPS = 60
 SCREEN_WIDTH = 400
 SCREEN_HEIGHT = 600
 
-BLACK  = (0, 0, 0)
-WHITE  = (255, 255, 255)
-RED    = (255, 0, 0)
-
-font       = pygame.font.SysFont("Verdana", 60)
-font_small = pygame.font.SysFont("Verdana", 20)
-font_mid   = pygame.font.SysFont("Verdana", 30)
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
+RED   = (255, 0, 0)
 
 # here we draw a simple button and return its rect
 def draw_button(surface, text, x, y, w, h, color):
+    font_small = pygame.font.SysFont("Verdana", 20)
     pygame.draw.rect(surface, color, (x, y, w, h))
     label = font_small.render(text, True, WHITE)
     surface.blit(label, (x + 10, y + 10))
@@ -24,6 +21,7 @@ def draw_button(surface, text, x, y, w, h, color):
 
 # here we show the main menu screen
 def show_main_menu(surface, clock):
+    font_mid = pygame.font.SysFont("Verdana", 30)
     while True:
         surface.fill(BLACK)
         title = font_mid.render("RACER GAME", True, (255, 255, 0))
@@ -51,15 +49,16 @@ def show_main_menu(surface, clock):
 
 # here we show the settings screen
 def show_settings(surface, clock, settings, save_settings):
+    font_mid = pygame.font.SysFont("Verdana", 30)
     while True:
         surface.fill(BLACK)
         title = font_mid.render("SETTINGS", True, (255, 255, 0))
         surface.blit(title, (130, 40))
         sound_label = "Sound: ON" if settings["sound"] else "Sound: OFF"
-        btn_sound = draw_button(surface, sound_label,                        80, 130, 240, 45, (0, 120, 120))
-        btn_color = draw_button(surface, "Car: " + settings["car_color"],    80, 195, 240, 45, (120, 0, 120))
+        btn_sound = draw_button(surface, sound_label,                             80, 130, 240, 45, (0, 120, 120))
+        btn_color = draw_button(surface, "Car: " + settings["car_color"],         80, 195, 240, 45, (120, 0, 120))
         btn_diff  = draw_button(surface, "Difficulty: " + settings["difficulty"], 80, 260, 240, 45, (120, 80, 0))
-        btn_back  = draw_button(surface, "Back",                             80, 360, 240, 45, (180, 0, 0))
+        btn_back  = draw_button(surface, "Back",                                  80, 360, 240, 45, (180, 0, 0))
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -88,6 +87,8 @@ def show_settings(surface, clock, settings, save_settings):
 
 # here we show leaderboard screen with top 10
 def show_leaderboard_screen(surface, clock):
+    font_small = pygame.font.SysFont("Verdana", 20)
+    font_mid   = pygame.font.SysFont("Verdana", 30)
     leaderboard = load_leaderboard()
     while True:
         surface.fill(BLACK)
@@ -111,6 +112,8 @@ def show_leaderboard_screen(surface, clock):
 
 # here we show game over screen with final stats
 def show_game_over(surface, clock, total_score, distance, coin_count):
+    font      = pygame.font.SysFont("Verdana", 60)
+    font_small = pygame.font.SysFont("Verdana", 20)
     while True:
         surface.fill(RED)
         go_text    = font.render("Game Over", True, BLACK)
@@ -137,6 +140,8 @@ def show_game_over(surface, clock, total_score, distance, coin_count):
 
 # here we ask player to type their name
 def get_username(surface, clock):
+    font_small = pygame.font.SysFont("Verdana", 20)
+    font_mid   = pygame.font.SysFont("Verdana", 30)
     name = ""
     while True:
         surface.fill(BLACK)
