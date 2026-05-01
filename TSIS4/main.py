@@ -1,4 +1,3 @@
-
 import pygame
 import os
 
@@ -21,8 +20,8 @@ init_db()
 settings = load_settings()  # загружаем настройки сразу при старте (task 3.5)
 
 
-# task 3.6: состояния игры 
-# в какой момент находимся — меню, игра, пауза и тд
+#  task 3.6: состояния игры 
+# в какой момент находимся  меню, игра, пауза и тд
 
 class State:
     USERNAME    = "username"
@@ -127,8 +126,7 @@ b_tomenu = Button("⌂  Главное меню", cx, HEIGHT // 2 + 140)
 b_back   = Button("← Назад", cx, HEIGHT - 45, w=160, h=38)
 
 # настройки — тогглы и сохранение
-b_grid   = Button("", cx, HEIGHT // 2 - 40, w=260, h=44)
-b_sound  = Button("", cx, HEIGHT // 2 + 20, w=260, h=44)
+b_grid   = Button("", cx, HEIGHT // 2 - 20, w=260, h=44)
 b_save   = Button("💾  Сохранить и назад", cx, HEIGHT - 45, w=270, h=44)
 
 # выбор цвета змейки — 5 кнопок в ряд
@@ -253,8 +251,6 @@ while running:
         elif state == State.SETTINGS:
             if b_grid.clicked(event):
                 temp_settings["grid_overlay"] = not temp_settings["grid_overlay"]
-            elif b_sound.clicked(event):
-                temp_settings["sound"] = not temp_settings["sound"]
             elif b_save.clicked(event):
                 # применяем и сохраняем в файл
                 settings.update(temp_settings)
@@ -409,8 +405,7 @@ while running:
         draw_center("НАСТРОЙКИ", font_big, 65, (200, 200, 255))
         # текст кнопки меняется в зависимости от значения
         b_grid.text  = f"Сетка:  {'ВКЛ' if temp_settings['grid_overlay'] else 'ВЫКЛ'}"
-        b_sound.text = f"Звук:   {'ВКЛ' if temp_settings['sound'] else 'ВЫКЛ'}"
-        b_grid.draw(); b_sound.draw()
+        b_grid.draw()
         draw_center("Цвет змейки:", font_small, HEIGHT // 2 + 68, (200, 200, 200))
         for i, (bc, (_, rgb)) in enumerate(zip(b_colors, COLOR_OPTIONS)):
             selected = (temp_settings["snake_color"] == list(rgb))
