@@ -71,7 +71,7 @@ def show_settings(surface, clock, settings, save_settings):
                     save_settings(settings)
                 if btn_color.collidepoint(event.pos):
                     # here we cycle through car colors
-                    colors = ["red", "blue", "green", "yellow"]
+                    colors = ["red", "blue", "green"]
                     i = colors.index(settings["car_color"])
                     settings["car_color"] = colors[(i + 1) % len(colors)]
                     save_settings(settings)
