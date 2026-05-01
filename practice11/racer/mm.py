@@ -55,10 +55,12 @@ class Enemy(pygame.sprite.Sprite):
 class Coin(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load("coin.png") # Ensure you have a coin.png image
+        self.image = pygame.image.load("coin.png")
         self.rect = self.image.get_rect()
         # Randomly spawn coin at the top of the screen
         self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
+        # Task 1: coin gets a random weight (1, 3, or 5 points)
+        self.weight = random.choice([1, 3, 5])
 
     def move(self):
         self.rect.move_ip(0, SPEED)
@@ -69,6 +71,8 @@ class Coin(pygame.sprite.Sprite):
     def reset(self):
         self.rect.top = 0
         self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
+        # Task 1: pick a new random weight each time coin resets
+        self.weight = random.choice([1, 3, 5])
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
@@ -134,10 +138,14 @@ while True:
         entity.move()
 
     # Collision detection for Coins
-    # If Player hits a coin, меняем позицию моентки и скор увеличиваем
+    # If Player hits a coin, меняем позицию монетки и скор увеличиваем
     if pygame.sprite.spritecollide(P1, coins, False):
-        COIN_COUNT += 1
-        C1.reset() 
+        # Task 1: add coin's weight instead of just +1
+        COIN_COUNT += C1.weight
+        C1.reset()
+        # Task 2: every 10 coins, increase enemy speed
+        if COIN_COUNT % 10 == 0:
+            SPEED += 1
 
     # если collision happen between Player and Enemy
     if pygame.sprite.spritecollideany(P1, enemies):
